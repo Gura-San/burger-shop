@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import classes from './BurgerIngredient/BurgerIngredient.css'
+import classes from './BurgerIngredient.css'
 
 class BurgerIngredient extends Component {
   render () {
     let ingredient = null
     switch (this.props.type) {
       case ('bread-bottom'):
-        ingredient = <div>className={classes.BreadBottom}</div>
+        ingredient = <div className={classes.BreadBottom}></div>
         break
       case ('bread-top'):
         ingredient = (
