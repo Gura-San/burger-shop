@@ -1,14 +1,16 @@
 import React from 'react';
 
 import Auxiliary from '../../../hoc/Auxiliary'
+import Button from '../../UI/Button/Button'
 
-const oderSummary = (props) => {
+const orderSummary = (props) => {
   const ingredientSummary = Object.keys(props.ingredients)
     .map(igKey => {
+      if (props.ingredients[igKey] > 0) {
       return (
       <li key={igKey}>
         <span style={{textTransform: 'capitalize'}}>{igKey}</span>: {props.ingredients[igKey]}
-      </li> )
+      </li> ) } else { return null }
     })
   return (
     <Auxiliary>
@@ -17,9 +19,12 @@ const oderSummary = (props) => {
       <ul>
         {ingredientSummary}
       </ul>
+      <p><strong>Total Price: {props.price.toFixed(2)}</strong></p>
       <p>Continue to checkout</p>
+      <Button btnType="Danger" clicked={props.purchaseCanceled}>CANCEL</Button>
+      <Button btnType="Success" clicked={props.purchaseContinue}>CONTINUE</Button>
     </Auxiliary>
   );
 };
 
-export default oderSummary;
+export default orderSummary;
